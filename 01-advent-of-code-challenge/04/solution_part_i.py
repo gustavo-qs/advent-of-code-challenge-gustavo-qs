@@ -1,13 +1,14 @@
 import sys
 
 pairs = 0
+
 for line in sys.stdin:
     left_elf = line.split(',')[0].split('-')
     right_elf = line.split(',')[1].split('-')
 
-    if(left_elf[0] <= right_elf[0] and left_elf[1] >= right_elf[0]):
+    if(int(left_elf[0]) <= int(right_elf[0]) and int(left_elf[1]) >= int(right_elf[1])):
         pairs += 1
-    elif(right_elf[0] <= left_elf[0]  and right_elf[1] >= left_elf[0]):
+    elif(int(right_elf[0]) <= int(left_elf[0]) and int(right_elf[1]) >= int(left_elf[1])):
         pairs += 1
 
-print(pairs)
+print("ranges que contenham completamente seus pares:", pairs)
