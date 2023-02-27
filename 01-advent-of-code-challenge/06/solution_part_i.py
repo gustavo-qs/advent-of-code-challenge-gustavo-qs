@@ -1,73 +1,16 @@
 import sys
 
-first = ''
-second = ''
-third = ''
-fourth = ''
-count = 0
+def message_start(datastream):
+    buffer = ''
+    for i, char in enumerate(datastream):
+        buffer += char
+        if len(buffer) > 4:
+            buffer = buffer[1:]
+        if len(buffer) == 4 and len(set(buffer)) == 4:
+            return i + 1
+    return -1  
 
-for line in sys.stdin:
-  for char in line:
-    if first == '':
-      first = char
-      count += 1
-      continue
-    elif second == '':
-      second = char
-      count += 1
-      continue
-    elif third == '':
-      third = char
-      count += 1
-      continue
-    elif fourth == '':
-      fourth = char
-      count += 1
-      continue
+stream = sys.stdin.readlines()
 
-    if(first == second):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    elif(first == third):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    elif(first == fourth):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    elif(second == third):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    elif(second == fourth):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    elif(third == fourth):
-      first = ''
-      second = ''
-      third = ''
-      fourth = ''
-      count += 1
-      continue
-    else:
-      break
-
-print(count)
+start = message_start(stream[0])
+print(start)
